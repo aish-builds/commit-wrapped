@@ -1,16 +1,17 @@
-import os
-import requests
-from dotenv import load_dotenv
-
-load_dotenv()
-
-TOKEN = os.getenv("GITHUB_TOKEN")
-headers = {"Authorization": f"token {TOKEN}"}
+from fetchers import fetch_user_profile, fetch_repos
 
 username = "aish-builds"
-response = requests.get(f"https://api.github.com/users/{username}/repos", headers=headers)
-repos = response.json() 
-#parses response from JSON format to python objects (list of nested dictionaries)
 
-for repo in repos:
-    print(repo["name"], "—", repo["language"])
+profile = fetch_user_profile(username)
+
+if profile is None:
+    print(f"Could not fetch profile for {username}.")
+else:
+    print(profile)
+
+repos = fetch_repos(username)
+
+if repos is None:
+    print(f"Could not fetch the repos for {username}.")
+else:
+    print(repos)
