@@ -47,7 +47,6 @@ def fetch_all_commits(username, repos):
         if response.status_code != 200:
             continue
         
-        print(f"Fetching commits from {repo['name']}...")
         commits = response.json()
         for commit in commits:
             timestamps.append(commit["commit"]["author"]["date"])

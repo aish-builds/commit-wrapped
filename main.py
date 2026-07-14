@@ -1,7 +1,8 @@
 from fetchers import fetch_user_profile, fetch_repos, fetch_all_commits
-from analyzers import calculate_language_breakdown
+from analyzers import calculate_language_breakdown, analyze_commit_times, determine_persona
+from display import hour_to_12, display_wrapped
 
-username = input("Enter a GitHub username: ")
+username = "aish-builds"
 
 profile = fetch_user_profile(username)
 if profile is None:
@@ -19,4 +20,7 @@ if not timestamps:
     exit()
 
 language_breakdown = calculate_language_breakdown(repos)
-print(language_breakdown)  # temporary - replaced by display_wrapped soon
+analysis = analyze_commit_times(timestamps)
+persona = determine_persona(analysis, language_breakdown)
+
+display_wrapped(profile, language_breakdown, analysis, persona)
