@@ -2,7 +2,7 @@ from fetchers import fetch_user_profile, fetch_repos, fetch_all_commits
 from analyzers import calculate_language_breakdown, analyze_commit_times, determine_persona
 from display import hour_to_12, display_wrapped
 
-username = "aish-builds"
+username = input("Enter GitHub username: ")
 
 profile = fetch_user_profile(username)
 if profile is None:
