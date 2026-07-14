@@ -1,6 +1,6 @@
 # Commit Wrapped 🎁
 
-Your GitHub year, Spotify Wrapped style. A Python CLI tool that analyzes any 
+Your GitHub activity, Spotify Wrapped style. A Python CLI tool that analyzes any 
 GitHub user's public activity and generates a personalized "Wrapped" — commit 
 stats, language breakdown, and a coding persona — displayed as animated 
 terminal cards.
